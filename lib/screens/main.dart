@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sesehat_flutter/screens/chat.dart';
 import 'package:sesehat_flutter/screens/home.dart';
 
 class Main extends StatefulWidget {
@@ -10,7 +11,7 @@ class _MainState extends State<Main> {
   int _selectedIndex = 0;
   List<Widget> _screenOptions = <Widget>[
     Home(),
-    Text('TODO: chat screen'),
+    ChatScreen(),
     Text('TODO: lainnya screen')
   ];
 

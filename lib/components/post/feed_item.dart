@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sesehat_flutter/components/post/reactions/like.dart';
 import 'package:sesehat_flutter/components/post/reactions/stateless_reaction.dart';
 import 'package:sesehat_flutter/models/post.dart';
+import 'package:sesehat_flutter/utils/date_time.dart';
 import 'package:sesehat_flutter/utils/number.dart';
 
 class FeedItem extends StatefulWidget {
@@ -59,7 +60,7 @@ class _FeedItemState extends State<FeedItem> {
                 InkWell(
                   onTap: () => print('TODO'),
                   child: Text(
-                    _humanizeUnixTime(widget.post.createdAt),
+                    humanizeUnixTime(widget.post.createdAt),
                     maxLines: 1,
                     style: Theme.of(context).textTheme.caption,
                   ),
@@ -79,22 +80,6 @@ class _FeedItemState extends State<FeedItem> {
         ),
       ]),
     );
-  }
-
-  String _humanizeUnixTime(int unixTime) {
-    DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(unixTime * 1000);
-    Duration difference = _currentDateTime.difference(dateTime);
-    if (difference.inDays > 7) {
-      return dateTime.toLocal().toString();
-    } else if (difference.inDays > 0) {
-      return '${difference.inDays}hari';
-    } else if (difference.inHours > 0) {
-      return '${difference.inHours}jam';
-    } else if (difference.inMinutes > 0) {
-      return '${difference.inMinutes}';
-    } else {
-      return '${difference.inSeconds}';
-    }
   }
 
   Widget _theBody(BuildContext context) {
