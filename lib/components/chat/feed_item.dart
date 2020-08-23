@@ -23,24 +23,23 @@ class _ChatFeedItemState extends State<ChatFeedItem> {
 
     final List<Widget> trailingChildren = [
       Text(humanizeDateTime(widget.chat.lastMessageSentAt)),
+      Text(''),
     ];
     if (_unread.toInt() > 0) {
-      trailingChildren.add(
-        Container(
-          width: 30,
-          alignment: Alignment.center,
-          child: Text(
-            _unread.toString(),
-            style: TextStyle(
-              color: Colors.white,
-            ),
+      trailingChildren[1] = Container(
+        width: 30,
+        alignment: Alignment.center,
+        child: Text(
+          _unread.toString(),
+          style: TextStyle(
+            color: Colors.white,
           ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(
-              Radius.circular(5),
-            ),
-            color: Theme.of(context).primaryColor,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(
+            Radius.circular(5),
           ),
+          color: Theme.of(context).primaryColor,
         ),
       );
     }
@@ -62,9 +61,10 @@ class _ChatFeedItemState extends State<ChatFeedItem> {
           widget.chat.lastMessage,
           maxLines: 2,
         ),
-        // trailing: Text(humanizeDateTime(widget.chat.lastMessageSentAt)),
-        trailing:
-            Column(mainAxisSize: MainAxisSize.min, children: trailingChildren),
+        trailing: Container(
+          width: 30,
+          child: Column(mainAxisSize: MainAxisSize.min, children: trailingChildren),
+        ),
       ),
     );
   }
