@@ -22,13 +22,41 @@ class _HomeState extends State<Home> {
     );
   }
 
+  List<Widget> _buildActions(BuildContext context) {
+    return [
+      DropdownButton( // TODO: this dropdown is still not working
+        icon: Icon(Icons.filter_list),
+        items: [
+          DropdownMenuItem(child: Text('Saya'), value: 'saya',),
+          DropdownMenuItem(child: Text('Publik'), value: 'publik',),
+          DropdownMenuItem(child: Text('Komunitas A'), value: 'komunitas-a',),
+          DropdownMenuItem(child: Text('Komunitas B'), value: 'komunitas-b',),
+        ],
+        onChanged: null,
+      ),
+    ];
+  }
+
+  Widget _buildPostCreationTrigger(BuildContext context) {
+    return FloatingActionButton(
+      child: Icon(Icons.add),
+      onPressed: () {
+        Scaffold.of(context).showSnackBar(SnackBar(
+          content: Text('TODO: post creation screen'),
+        ));
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sesehat'),
+        title: Text('Logo'),
+        actions: _buildActions(context),
       ),
       body: _buildPostFeed(context),
+      floatingActionButton: _buildPostCreationTrigger(context),
     );
   }
 }
