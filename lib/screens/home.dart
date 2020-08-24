@@ -10,6 +10,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<Post> _postList = <Post>[];
+  String _postListFilter = 'all';
+
   Widget _buildPostFeed(BuildContext context) {
     return ListView.builder(
       padding: EdgeInsets.all(16.0),
@@ -22,31 +24,31 @@ class _HomeState extends State<Home> {
     );
   }
 
+  Widget _buildFilterOptions(BuildContext context) {
+    return PopupMenuButton(
+      tooltip: 'Filter postingan',
+      itemBuilder: (context) => [
+        PopupMenuItem(child: Text('Semua'), value: 'all'),
+        PopupMenuItem(child: Text('Publik'), value: 'public'),
+        PopupMenuItem(child: Text('Komunitas A'), value: 'komunitas-a'),
+        PopupMenuItem(child: Text('Komunitas B'), value: 'komunitas-b'),
+      ],
+      icon: Icon(Icons.filter_list),
+      initialValue: _postListFilter,
+      onSelected: (value) {
+        setState(() {
+          _postListFilter = value;
+        });
+        Scaffold.of(context).showSnackBar(SnackBar(
+          content: Text('TODO: filter this value $value!'),
+        ));
+      },
+    );
+  }
+
   List<Widget> _buildActions(BuildContext context) {
     return [
-      DropdownButton(
-        // TODO: this dropdown is still not working
-        icon: Icon(Icons.filter_list),
-        items: [
-          DropdownMenuItem(
-            child: Text('Saya'),
-            value: 'saya',
-          ),
-          DropdownMenuItem(
-            child: Text('Publik'),
-            value: 'publik',
-          ),
-          DropdownMenuItem(
-            child: Text('Komunitas A'),
-            value: 'komunitas-a',
-          ),
-          DropdownMenuItem(
-            child: Text('Komunitas B'),
-            value: 'komunitas-b',
-          ),
-        ],
-        onChanged: null,
-      ),
+      _buildFilterOptions(context),
     ];
   }
 
