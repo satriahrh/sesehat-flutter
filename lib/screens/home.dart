@@ -24,13 +24,26 @@ class _HomeState extends State<Home> {
 
   List<Widget> _buildActions(BuildContext context) {
     return [
-      DropdownButton( // TODO: this dropdown is still not working
+      DropdownButton(
+        // TODO: this dropdown is still not working
         icon: Icon(Icons.filter_list),
         items: [
-          DropdownMenuItem(child: Text('Saya'), value: 'saya',),
-          DropdownMenuItem(child: Text('Publik'), value: 'publik',),
-          DropdownMenuItem(child: Text('Komunitas A'), value: 'komunitas-a',),
-          DropdownMenuItem(child: Text('Komunitas B'), value: 'komunitas-b',),
+          DropdownMenuItem(
+            child: Text('Saya'),
+            value: 'saya',
+          ),
+          DropdownMenuItem(
+            child: Text('Publik'),
+            value: 'publik',
+          ),
+          DropdownMenuItem(
+            child: Text('Komunitas A'),
+            value: 'komunitas-a',
+          ),
+          DropdownMenuItem(
+            child: Text('Komunitas B'),
+            value: 'komunitas-b',
+          ),
         ],
         onChanged: null,
       ),
@@ -42,7 +55,8 @@ class _HomeState extends State<Home> {
       child: Icon(Icons.add),
       onPressed: () {
         Scaffold.of(context).showSnackBar(SnackBar(
-          content: Text('TODO: post creation screen'),
+          content: Text(
+              'TODO: post creation screen'), // TODO: post creation like this https://hackernoon.com/how-to-develop-a-wysiwyg-editor-in-android-just-like-medium-30e0d4c8471f
         ));
       },
     );
