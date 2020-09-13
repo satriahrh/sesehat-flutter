@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sesehat_flutter/components/post/feed_item.dart';
 import 'package:sesehat_flutter/models/post.dart';
 import 'package:sesehat_flutter/services/post_feed.dart';
+import 'package:sesehat_flutter/screens/post_creation.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -56,10 +57,10 @@ class _HomeState extends State<Home> {
     return FloatingActionButton(
       child: Icon(Icons.add),
       onPressed: () {
-        Scaffold.of(context).showSnackBar(SnackBar(
-          content: Text(
-              'TODO: post creation screen'), // TODO: post creation like this https://hackernoon.com/how-to-develop-a-wysiwyg-editor-in-android-just-like-medium-30e0d4c8471f
-        ));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => PostCreation()),
+        );
       },
     );
   }
